@@ -35,11 +35,11 @@
 	subSubmit_button.addEventListener('click', () => {
 		console.log('BUTTON CLICKED');
 		document.getElementById("buttonStatusSpan").innerHTML = "button clicked";
-		let subPostTitlesString = ""; //this is gonna be set to "subPostTitlesParagraph" later. is this okay to define it here?
+		var subPostTitlesString = ""; //this is gonna be set to "subPostTitlesParagraph" later. is this okay to define it here?
 		document.getElementById("subPostTitlesParagraph").innerHTML = subPostTitlesString; //go ahead and empty the page when you start again? so maybe if you get bad inputs it leaves it blank instead of leaving the last results? //or if i've fucked it up lol, that's just as likely
 		
-		let searchInputString = searchInput.value;
-		let subInputString = subInput.value;
+		var searchInputString = searchInput.value;
+		var subInputString = subInput.value;
 		
 		console.log('CONTENTS OF: searchInputString:', searchInputString);
 		if (searchInputString != ""){		//if there is a search term
@@ -57,7 +57,7 @@
 				
 				jsonData = data.data;
 				jsonDataChildren = jsonData.children;
-				for (let i in jsonDataChildren) {
+				for (var i in jsonDataChildren) {
 					jsonDataChild = jsonDataChildren[i];
 					jsonDataChildData = jsonDataChild.data;
 					jsonDataChildDataTitle = jsonDataChildData.title;
@@ -86,7 +86,7 @@
 				
 				jsonData = data.data;
 				jsonDataChildren = jsonData.children;
-				for (let i in jsonDataChildren) {
+				for (var i in jsonDataChildren) {
 					jsonDataChild = jsonDataChildren[i];
 					jsonDataChildData = jsonDataChild.data;
 					jsonDataChildDataTitle = jsonDataChildData.title;
