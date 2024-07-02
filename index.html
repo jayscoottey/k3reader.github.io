@@ -16,9 +16,11 @@
 	<br><br>
 	<label for="searchInput">Search Term(s):</label>
 	<input type="text" id="searchInput" name="searchInput">
-	<input type="button" value="Submit">
+	<input type="button" value="Submit"> <span id="buttonStatusSpan"></span>
 	<p>*pressing enter to search does not work, you have to hit the submit button.</p>
 </form>
+
+<p id="responseParagraph"></p>
 
 <h2>Posts in r/</h2>
 
@@ -32,6 +34,7 @@
 	
 	subSubmit_button.addEventListener('click', () => {
 		console.log('BUTTON CLICKED');
+		document.getElementById("buttonStatusSpan").innerHTML = "button clicked";
 		let subPostTitlesString = ""; //this is gonna be set to "subPostTitlesParagraph" later. is this okay to define it here?
 		document.getElementById("subPostTitlesParagraph").innerHTML = subPostTitlesString; //go ahead and empty the page when you start again? so maybe if you get bad inputs it leaves it blank instead of leaving the last results? //or if i've fucked it up lol, that's just as likely
 		
@@ -46,6 +49,8 @@
 			fetch(apiUrl).then(response => {
 				console.log('RESPONSE: ', response);
 				return response.json();
+				console.log('JSON RESPONSE:', response());
+				document.getElementById("responseParagraph").innerHTML = response.json();
 			}) //fetch api
 			.then(data => {
 				console.log('DATA: ', data);
