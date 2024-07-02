@@ -40,23 +40,36 @@
 
 	
 
-	<h1>cat fact from https://catfact.ninja/fact:</h1>
+	<h1>cat fact from https://catfact.ninja/fact api:</h1>
+	<span>response:</span> <span id="responseSpan"></span>
 	<p id="catFactParagraph"></p>
+	<p id="error"></p>
 
 	<script>
 
 		apiUrl = "https://catfact.ninja/fact";
-		fetch(apiUrl).then(response => {
+		try{
 
-			return response.json();
+			fetch(apiUrl).then(response => {
 
-		})
-		.then(data => {
+				console.log('RESPONSE: ', response);
+				document.getElementById("responseSpan").innerHTML = response;
+				return response.body;
 
-			console.log('DATA: ', data);
-			document.getElementById("catFactParagraph").innerHTML = data.fact;
+			})
+			.then(data => {
 
-		})
+				console.log('DATA: ', data);
+				document.getElementById("catFactParagraph").innerHTML = "data: " + data;
+
+			})
+		}
+		catch (e) {
+
+			console.log('error: ', e.message);
+			document.getElementById("error").innerHTML = e.message;
+
+		}
 
 	</script>
 
