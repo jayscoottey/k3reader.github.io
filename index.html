@@ -49,6 +49,7 @@
 		document.getElementById("catFactHeader").innerHTML = "cat fact from https://catfact.ninja/fact api:";
 		
 		xhttp = new XMLHttpRequest();
+		/*
 		xhttp.onreadystatechange = function() {
 
 			if (this.readyState == 4 && this.status == 200) {
@@ -59,12 +60,14 @@
 				document.getElementById("catFactParagraph").innerHTML = this.status;
 			}
 		};
+		*/
 
 		document.getElementById("catFactParagraph").innerHTML = "test";
 
-		xhttp.open("GET", "https://catfact.ninja/fact", true);
+		xhttp.open("GET", "https://catfact.ninja/fact", false);
 		xhttp.send();
 
+		document.getElementById("catFactParagraph").innerHTML = xhttp.responseText;
 		document.getElementById("xhttp").innerHTML = "xhttp" + xhttp;
 		console.log('xhttp', xhttp);
 		
