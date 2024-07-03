@@ -54,13 +54,13 @@
 
 				console.log('RESPONSE: ', response);
 				document.getElementById("responseSpan").innerHTML = response;
-				return response.body;
+				return response.json();
 
 			})
 			.then(data => {
 
 				console.log('DATA: ', data);
-				document.getElementById("catFactParagraph").innerHTML = "data: " + data;
+				document.getElementById("catFactParagraph").innerHTML = data;
 
 			})
 		}
