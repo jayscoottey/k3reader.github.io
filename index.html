@@ -40,10 +40,12 @@
 
 	
 
-	<h1>cat fact from https://catfact.ninja/fact api:</h1>
+	<h1 id="catFactHeader"></h1>
 	<p id="catFactParagraph"></p>
 
 	<script>
+
+		document.getElementById("catFactHeader").innerHTML = "cat fact from https://catfact.ninja/fact api:";
 		
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
