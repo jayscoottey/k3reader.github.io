@@ -56,7 +56,7 @@
 				document.getElementById("catFactParagraph").innerHTML = xhttp.responseText;
 			}
 			else {
-				document.getElementById("catFactParagraph").innerHTML = "request failed?"
+				document.getElementById("catFactParagraph").innerHTML = this.status;
 			}
 		};
 
