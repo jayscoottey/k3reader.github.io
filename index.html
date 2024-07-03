@@ -55,6 +55,9 @@
 				console.log('RESPONSE: ', xhttp);
 				document.getElementById("catFactParagraph").innerHTML = xhttp.responseText;
 			}
+			else {
+				document.getElementById("catFactParagraph").innerHTML = "request failed?"
+			}
 		};
 
 		document.getElementById("catFactParagraph").innerHTML = "test";
@@ -62,7 +65,8 @@
 		xhttp.open("GET", "https://catfact.ninja/fact", true);
 		xhttp.send();
 
-		document.getElementById("xhttp").innerHTML = xhttp;
+		document.getElementById("xhttp").innerHTML = "xhttp" + xhttp;
+		console.log('xhttp', xhttp);
 		
 	</script>
 
