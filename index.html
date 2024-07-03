@@ -46,7 +46,7 @@
 
 	<script>
 
-		document.getElementById("catFactHeader").innerHTML = "cat fact from https://catfact.ninja/fact api:";
+		document.getElementById("catFactHeader").innerHTML = "test api:";
 		
 		xhttp = new XMLHttpRequest();
 		/*
@@ -64,7 +64,7 @@
 
 		document.getElementById("catFactParagraph").innerHTML = "test";
 
-		xhttp.open("GET", "https://catfact.ninja/fact", false);
+		xhttp.open("GET", "https://eu.httpbin.org/", false);
 		xhttp.send();
 
 		document.getElementById("catFactParagraph").innerHTML = xhttp.responseText;
