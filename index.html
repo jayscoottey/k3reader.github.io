@@ -48,7 +48,7 @@
 
 		document.getElementById("catFactHeader").innerHTML = "test api:";
 		
-		xhttp = new XMLHttpRequest();
+		//xhttp = new XMLHttpRequest();
 		/*
 		xhttp.onreadystatechange = function() {
 
@@ -62,7 +62,7 @@
 		};
 		*/
 
-		document.getElementById("catFactParagraph").innerHTML = "test";
+		/*document.getElementById("catFactParagraph").innerHTML = "test";
 
 		xhttp.open("GET", "https://eu.httpbin.org/", false);
 		xhttp.send();
@@ -70,7 +70,22 @@
 		document.getElementById("catFactParagraph").innerHTML = xhttp.responseText;
 		document.getElementById("xhttp").innerHTML = "xhttp" + xhttp;
 		console.log('xhttp', xhttp);
-		
+		*/buttonClick
+
+
+		fetch("https://eu.httpbin.org/").then(response => {
+			console.log('RESPONSE: ', response);
+			return response;
+		})
+		.then(data => {
+			document.getElementById("catFactParagraph").innerHTML = data.url;
+		});
+
+
+
+	
+
+
 	</script>
 
 
