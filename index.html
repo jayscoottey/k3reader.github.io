@@ -41,36 +41,21 @@
 	
 
 	<h1>cat fact from https://catfact.ninja/fact api:</h1>
-	<span>response:</span> <span id="responseSpan"></span>
 	<p id="catFactParagraph"></p>
-	<p id="error"></p>
 
 	<script>
+		
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
 
-		apiUrl = "https://catfact.ninja/fact";
-		try{
+			if (this.readyState == 4 && this.status == 200) {
+				console.log('RESPONSE: ', xhttp);
+				document.getElementById("catFactParagraph").innerHTML = xhttp.responseText;
+			}
+		};
 
-			fetch(apiUrl).then(response => {
-
-				console.log('RESPONSE: ', response);
-				document.getElementById("responseSpan").innerHTML = response;
-				return response.body;
-
-			})
-			.then(data => {
-
-				console.log('DATA: ', data);
-				document.getElementById("catFactParagraph").innerHTML = "data: " + data;
-
-			})
-		}
-		catch (e) {
-
-			console.log('error: ', e.message);
-			document.getElementById("error").innerHTML = e.message;
-
-		}
-
+		xhttp.open("GET", "https://catfact.ninja/fact", true);
+		xhttp.send();
 	</script>
 
 
