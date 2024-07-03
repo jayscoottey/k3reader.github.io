@@ -74,7 +74,7 @@
 
 
 		fetch("https://eu.httpbin.org/").then(response => {
-			console.log('RESPONSE: ', response);
+			window.alert('RESPONSE: ', response);
 			return response;
 		})
 		.then(data => {
