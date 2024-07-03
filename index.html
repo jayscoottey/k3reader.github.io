@@ -64,7 +64,7 @@
 
 		document.getElementById("catFactParagraph").innerHTML = "test";
 
-		xhttp.open("GET", "https://eu.httpbin.org/", false);
+		xhttp.open("GET", "https://api.reddit.com/r/formula1.json", false);
 		xhttp.send();
 
 		document.getElementById("catFactParagraph").innerHTML = xhttp.responseText;
