@@ -7,71 +7,43 @@
 
 <body>
 
-	<h1>testing things..</h1>
+	
+<div id="homePageAndSearchDiv"> <!---------------------------------------------------->
+
+<h2>Reddit reader using only HTML and JavaScript.</h2>
+<p>I've made this to read text posts on my Kindle 3 after Reddit killed i.reddit.com</p>
+<p>Let me know what other devices this works well on!</p>
+
+<br>
+
+<form>
+Subreddit: <input type="text" id="subInput" name="subInput">
+<br>
+<br>
+Search Term(s): <input type="text" id="searchInput" name="searchInput"> <input type="button" value="Click to submit">
+</form>
+
+<br>
+</div> <!---------------------------------------------------------------------------->
 
 
 
-	Testing JS...
-	Seconds since page loaded: <span id="time">0</span>
-	<script type="text/javascript">
-		var time = 0;
-		setInterval(function() {
-			time += 1;
-			document.getElementById("time").innerText = time;
-		}, 1000);
-	</script>
-
-	<br>
-
-	<button onclick="buttonClick()">button</button> <span id="buttonStatus"></span>
-
-	<script>
-
-		var test = "test";
-
-		function buttonClick() {
-
-			document.getElementById("buttonStatus").innerHTML = "clicked";
-
-		}
 
 
-	</script>
 
+<div id="searchResultsDiv"> <!----------example layout: clear this with JS ---------->
+<br>
+
+<span id="examplePostTitleSpan">Example Post Title</span>
+<br>
+<span id="examplePostInfoSpan">by u/exampleUser 00 points 00 hours ago <input type="button" id="examplePostId" onClick="view_post()" value="View post"> </span>
+
+<br>
+</div> <!---------------------------------------------------------------------------->
+	
 	
 
-	<h1 id="catFactHeader"></h1>
-	<p id="catFactParagraph"></p>
-	<p id="xhttp"></p>
 
-	<script>
-
-		document.getElementById("catFactHeader").innerHTML = "test api:";
-		
-		xhttp = new XMLHttpRequest();
-		/*
-		xhttp.onreadystatechange = function() {
-
-			if (this.readyState == 4 && this.status == 200) {
-				console.log('RESPONSE: ', xhttp);
-				document.getElementById("catFactParagraph").innerHTML = xhttp.responseText;
-			}
-			else {
-				document.getElementById("catFactParagraph").innerHTML = this.status;
-			}
-		};
-		*/
-
-		document.getElementById("catFactParagraph").innerHTML = "test";
-
-		xhttp.open("GET", "https://www.reddit.com/.json", false);
-		xhttp.send();
-
-		document.getElementById("catFactParagraph").innerHTML = xhttp.responseText;
-		document.getElementById("xhttp").innerHTML = "xhttp" + xhttp;
-		console.log('xhttp', xhttp);
-		
-	</script>
 
 
 
