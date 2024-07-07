@@ -79,7 +79,8 @@
 
 	function expand_post_body(passedElementId){
 		document.getElementById(passedElementId + "Preview").style.display='none';
-		document.getElementById(passedElementId + "Body").innerHTML = "Text post here ---------------------------------------------------------------- <br> <input type='button' name='examplePostId' onClick='collapse_post_body(this.name)' value='Collapse'>";
+		testText = "Text post here ----------------------------------------------------------------";
+		document.getElementById(passedElementId + "Body").innerHTML += testText + " <br> <input type='button' name='" + passedElementId + "' onClick='collapse_post_body(this.name)' value='Collapse'>";
 	}
 
 	function collapse_post_body(passedElementId){
