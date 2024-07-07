@@ -59,10 +59,29 @@
 
 	</div>
 
-
-
-
 </div> <!---------------------------------------------------------------------------->
+
+
+
+<div id="postWithCommentsDiv"> <!--example layout, clear and hide this with js at start-->
+
+	<br>
+	----------this will be as a new page----------------------------
+	<br>
+
+	<br>
+	<span><input type="button" onClick="go_back_to_search()" value="<-"><i>by u/exampleUser 00 points 00 hours ago</i> </span>
+	<br>
+	<span><b>Example Post Title</b></span>
+	<br>
+	<br>
+	Comments: <!--should i put this inside of an element or is it okay to just have the text here?-->
+	<div id="exampleCommentId">
+		<span></span>
+	</div>
+
+
+</div> <!-------------------------------------------------------------------------------->
 
 
 <script>
@@ -82,6 +101,8 @@
 		testText = "Text post here ----------------------------------------------------------------";
 		document.getElementById(passedElementId + "Body").innerHTML += testText + " <br> <input type='button' name='" + passedElementId + "' onClick='collapse_post_body(this.name)' value='Collapse'>";
 	}
+
+	//not sure whether to populate each paragraph with the post body upon search, or do it like i am now. 
 
 	function collapse_post_body(passedElementId){
 		document.getElementById(passedElementId + "Body").innerHTML = "";
