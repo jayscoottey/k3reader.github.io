@@ -70,14 +70,47 @@
 	<br>
 
 	<br>
-	<span><input type="button" onClick="go_back_to_search()" value="<-"><i>by u/exampleUser 00 points 00 hours ago</i> </span>
+	<span><input type="button" onClick="go_back_to_search()" value="<-"> <i>by u/exampleUser 00 points 00 hours ago</i> </span>
 	<br>
 	<span><b>Example Post Title</b></span>
 	<br>
 	<br>
 	Comments: <!--should i put this inside of an element or is it okay to just have the text here?-->
+	<br>
+	<br>
 	<div id="exampleCommentId">
-		<span></span>
+		<span><i>by u/exampleUser 00 points 00 hours ago</i></span>
+		<br>
+		<span>Example comment.............</span>
+		<br>
+		&nbsp&nbsp&nbsp&nbsp|
+		<br>
+		<div id="exampleCommentIdReplies">
+			<div id="exampleReplyId">
+				<span><i>&nbsp&nbsp&nbsp&nbsp| by u/exampleUser 00 points 00 hours ago</i></span>
+				<br>
+				<span>&nbsp&nbsp&nbsp&nbsp| Example reply</span>
+				<br>
+				&nbsp&nbsp&nbsp&nbsp|
+				<br>
+			</div>
+			<div id="exampleReply2Id">
+				<span><i>&nbsp&nbsp&nbsp&nbsp| by u/exampleUser 00 points 00 hours ago</i></span>
+				<br>
+				<span>&nbsp&nbsp&nbsp&nbsp|	Example reply</span>
+				<br>
+				&nbsp&nbsp&nbsp&nbsp|
+				<br>
+				<div id="exampleReply3Id">
+					<span><i>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp| by u/exampleUser 00 points 00 hours ago</i></span>
+					<br>
+					<span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp| Example reply</span>
+					<br>
+					<br>
+				</div>
+			</div>
+		</div>
+
 	</div>
 
 
@@ -85,8 +118,6 @@
 
 
 <script>
-
-	document.body.innerHTML += "<p>test paragraph</p>";
 
 	function hide_element(passedElementId) {
 		document.getElementById(passedElementId).style.display='none';
