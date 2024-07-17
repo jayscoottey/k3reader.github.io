@@ -7,7 +7,7 @@ Things to note:
         -Eventlistener not supported, use onclick instead
         -can't use 'let' or 'const' to declare variables, only use 'var', or just assign automatically? idk what's good practice
         -no fetch() function, use xhttp requests instead
-        
+
 
 Links I used:
 
@@ -17,3 +17,8 @@ Links I used:
 
     Creating HTML elements with JS:
     https://stackoverflow.com/questions/32213666/creating-elements-within-elements-with-javascript
+
+    Appending nodes:
+    https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode
+    https://stackoverflow.com/questions/8981145/appendchild-only-works-first-time
+    https://stackoverflow.com/questions/46647636/appendchild-not-working-in-for-loop

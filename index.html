@@ -14,7 +14,7 @@
 	I've made this to read text posts on my Kindle 3 after Reddit killed i.reddit.com
 	<br>
 	<br>
-	Let me know what other devices this works well on! <input type="button" id="clearPageButton" onclick="clear_page()" value="Clear"> <input type="button" id="generatePageButton" onclick="generate_page()" value="Generate">
+	Let me know what other devices this works well on! <input type="button" id="clearPageButton" onclick="clear_page()" value="Clear"> <input type="button" id="generatePageButton" onclick="regenerate_page()" value="Regenerate">
 
 	<br>
 	<br>
@@ -147,18 +147,32 @@
 		document.getElementById("searchResultsDiv").innerHTML = ''; //so clearing elements by doing this might be bad practice, bc it can lead to memory leaks if the browser doesn't delete the elements from memory. i'll use it for now tho. 
 	}
 
-	function generate_page() {
+	function regenerate_page() {
+		document.getElementById("searchResultsDiv").innerHTML = '';
+
 		/* newGenDiv = document.createElement("div");
 		newGenDiv.setAttribute('id', 'testGenDiv');
 		newGenDiv.textContent = "testing creating elements with JS" + "--this div's name: " + newGenDiv.id;
 		document.getElementById("searchResultsDiv").appendChild(newGenDiv); */
 
+		//here are some basic elements to use, named by the element with e afterwards
+		bre = document.createElement('br');
+
 		testArray = ["", "2"];
 		for (i in testArray) {
-			newGenDiv = document.createElement('div');
-			newGenDiv.setAttribute('id', 'testGenDiv' + testArray[i]);
-			newGenDiv.textContent = newGenDiv.id;
-			document.getElementById("searchResultsDiv").appendChild(newGenDiv);
+			ndiv = document.createElement('div');
+			ndiv.setAttribute('id', 'testGenDiv' + testArray[i]);
+
+			ndiv.appendChild(bre.cloneNode());
+
+			ndiv.appendChild(document.createElement('span'))
+			.appendChild(document.createElement('i'))
+			.textContent = "by u/exampleUser 00 points 00 hours ago";
+
+			ndiv.appendChild(document.createElement('button'))
+			.textContent = "button";
+
+			document.getElementById("searchResultsDiv").appendChild(ndiv);
 		}
 	}
 
