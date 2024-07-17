@@ -11,9 +11,12 @@
 <div id="homePageAndSearchDiv"> <!---------------------------------------------------->
 
 	<h2>Reddit reader using only HTML and JavaScript.</h2>
-	<p>I've made this to read text posts on my Kindle 3 after Reddit killed i.reddit.com</p>
-	<p>Let me know what other devices this works well on!</p>
+	I've made this to read text posts on my Kindle 3 after Reddit killed i.reddit.com
+	<br>
+	<br>
+	Let me know what other devices this works well on! <input type="button" id="clearPageButton" onclick="clear_page()" value="Clear"> <input type="button" id="generatePageButton" onclick="generate_page()" value="Generate">
 
+	<br>
 	<br>
 
 	<form>
@@ -38,11 +41,11 @@
 
 	<div>
 		<br>
-		<span><i>by u/exampleUser 00 points 00 hours ago</i> <input type="button" name="examplePostId" onClick="view_post_comments(this.name)" value="View comments"> </span>
+		<span><i>by u/exampleUser 00 points 00 hours ago</i> <input type="button" name="examplePostId" onclick="view_post_comments(this.name)" value="View comments"> </span>
 		<br>
 		<span><b>Example Post Title</b></span>
 		<br>
-		<span id="examplePostIdPreview">If a post has a long body, show a preview w/ an option to expand it... <input type="button" name="examplePostId" onClick="expand_post_body(this.name)" value="Expand"> </span>
+		<span id="examplePostIdPreview">If a post has a long body, show a preview w/ an option to expand it... <input type="button" name="examplePostId" onclick="expand_post_body(this.name)" value="Expand"> </span>
 		<span id="examplePostIdBody"></span>
 		
 
@@ -51,7 +54,7 @@
 
 	<div id="testDiv">
 		<br>
-		<span id="examplePost2InfoSpan"><i>by u/exampleUser2 00 points 00 hours ago</i> <input type="button" name="examplePost2Id" onClick="view_post_comments(this.name)" value="View comments"> </span>
+		<span id="examplePost2InfoSpan"><i>by u/exampleUser2 00 points 00 hours ago</i> <input type="button" name="examplePost2Id" onclick="view_post_comments(this.name)" value="View comments"> </span>
 		<br>
 		<span id="examplePost2TitleSpan"><b>Example Post2 Title</b></span>
 		<br>
@@ -70,7 +73,7 @@
 	<br>
 
 	<br>
-	<span><input type="button" onClick="go_back_to_search()" value="<-"> <i>by u/exampleUser 00 points 00 hours ago</i> </span>
+	<span><input type="button" onclick="go_back_to_search()" value="<-"> <i>by u/exampleUser 00 points 00 hours ago</i> </span>
 	<br>
 	<span><b>Example Post Title</b></span>
 	<br>
@@ -130,7 +133,7 @@
 	function expand_post_body(passedElementId){
 		document.getElementById(passedElementId + "Preview").style.display='none';
 		testText = "Text post here ----------------------------------------------------------------";
-		document.getElementById(passedElementId + "Body").innerHTML += testText + " <br> <input type='button' name='" + passedElementId + "' onClick='collapse_post_body(this.name)' value='Collapse'>";
+		document.getElementById(passedElementId + "Body").innerHTML += testText + " <br> <input type='button' name='" + passedElementId + "' onclick='collapse_post_body(this.name)' value='Collapse'>";
 	}
 
 	//not sure whether to populate each paragraph with the post body upon search, or do it like i am now. 
@@ -138,6 +141,17 @@
 	function collapse_post_body(passedElementId){
 		document.getElementById(passedElementId + "Body").innerHTML = "";
 		document.getElementById(passedElementId + "Preview").style.display='block';
+	}
+
+	function clear_page() {
+		document.getElementById("searchResultsDiv").innerHTML = ''; //so clearing elements by doing this might be bad practice, bc it can lead to memory leaks if the browser doesn't delete the elements from memory. i'll use it for now tho. 
+	}
+
+	function generate_page() {
+		newGenDiv = document.createElement("div");
+		newGenDiv.setAttribute('id', 'testGenDiv');
+		newGenDiv.textContent = "testing creating elements with JS";
+		document.getElementById("searchResultsDiv").appendChild(newGenDiv);
 	}
 
 </script>
