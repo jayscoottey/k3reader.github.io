@@ -39,7 +39,7 @@
 
 <div id="searchResultsDiv"> <!----------example layout: clear this with JS ---------->
 
-	<div>
+	<div id="testDiv">
 		<br>
 		<span><i>by u/exampleUser 00 points 00 hours ago</i> <input type="button" name="examplePostId" onclick="view_post_comments(this.name)" value="View comments"> </span>
 		<br>
@@ -52,7 +52,7 @@
 	</div>
 
 
-	<div id="testDiv">
+	<div id="testDiv2">
 		<br>
 		<span id="examplePost2InfoSpan"><i>by u/exampleUser2 00 points 00 hours ago</i> <input type="button" name="examplePost2Id" onclick="view_post_comments(this.name)" value="View comments"> </span>
 		<br>
@@ -148,10 +148,18 @@
 	}
 
 	function generate_page() {
-		newGenDiv = document.createElement("div");
+		/* newGenDiv = document.createElement("div");
 		newGenDiv.setAttribute('id', 'testGenDiv');
 		newGenDiv.textContent = "testing creating elements with JS" + "--this div's name: " + newGenDiv.id;
-		document.getElementById("searchResultsDiv").appendChild(newGenDiv);
+		document.getElementById("searchResultsDiv").appendChild(newGenDiv); */
+
+		testArray = ["", "2"];
+		for (i in testArray) {
+			newGenDiv = document.createElement('div');
+			newGenDiv.setAttribute('id', 'testGenDiv' + testArray[i]);
+			newGenDiv.textContent = newGenDiv.id;
+			document.getElementById("searchResultsDiv").appendChild(newGenDiv);
+		}
 	}
 
 </script>
