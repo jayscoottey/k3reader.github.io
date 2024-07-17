@@ -155,22 +155,19 @@
 		newGenDiv.textContent = "testing creating elements with JS" + "--this div's name: " + newGenDiv.id;
 		document.getElementById("searchResultsDiv").appendChild(newGenDiv); */
 
-		//here are some basic elements to use, named by the element with e afterwards
-		bre = document.createElement('br');
-
 		testArray = ["", "2"];
 		for (i in testArray) {
 			ndiv = document.createElement('div');
 			ndiv.setAttribute('id', 'testGenDiv' + testArray[i]);
 
-			ndiv.appendChild(bre.cloneNode());
+			ndiv.appendChild(document.createElement('br'));
 
 			ndiv.appendChild(document.createElement('span'))
 			.appendChild(document.createElement('i'))
 			.textContent = "by u/exampleUser 00 points 00 hours ago";
 
-			ndiv.appendChild(document.createElement('button'))
-			.textContent = "button";
+			ndiv.appendChild(document.createElement('input'))
+			.setAttribute('type', 'button')
 
 			document.getElementById("searchResultsDiv").appendChild(ndiv);
 		}
