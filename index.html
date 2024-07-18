@@ -47,6 +47,8 @@
 		<br>
 		<span id="examplePostIdPreview">If a post has a long body, show a preview w/ an option to expand it... <input type="button" name="examplePostId" onclick="expand_post_body(this.name)" value="Expand"> </span>
 		<span id="examplePostIdBody"></span>
+
+		<p>test paragraph, with button? <button></button></p>
 		
 
 	</div>
@@ -157,17 +159,14 @@
 
 		testArray = ["", "2"];
 		for (i in testArray) {
-			ndiv = document.createElement('div');
-			ndiv.setAttribute('id', 'testGenDiv' + testArray[i]);
-
+			ndiv = document.createElement('div'); //make a new div for each search result, that will be appended to the div of all results
+			//i'm just trying to recreate the original html, but with create element
+			ndiv.setAttribute('id', 'testGenDiv' + testArray[i]); //testGenDiv, testGenDiv2, and so on
+			
 			ndiv.appendChild(document.createElement('br'));
 
-			ndiv.appendChild(document.createElement('span'))
-			.appendChild(document.createElement('i'))
-			.textContent = "by u/exampleUser 00 points 00 hours ago";
 
-			ndiv.appendChild(document.createElement('input'))
-			.setAttribute('type', 'button')
+
 
 			document.getElementById("searchResultsDiv").appendChild(ndiv);
 		}
