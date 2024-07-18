@@ -47,8 +47,6 @@
 		<br>
 		<span id="examplePostIdPreview">If a post has a long body, show a preview w/ an option to expand it... <input type="button" name="examplePostId" onclick="expand_post_body(this.name)" value="Expand"> </span>
 		<span id="examplePostIdBody"></span>
-
-		<p>test paragraph, with button? <button></button></p>
 		
 
 	</div>
@@ -159,17 +157,43 @@
 
 		testArray = ["", "2"];
 		for (i in testArray) {
-			ndiv = document.createElement('div'); //make a new div for each search result, that will be appended to the div of all results
+			tempResultDiv = document.createElement('div'); //make a temp div for each search result, that will be appended to the div of all results
 			//i'm just trying to recreate the original html, but with create element
-			ndiv.setAttribute('id', 'testGenDiv' + testArray[i]); //testGenDiv, testGenDiv2, and so on
+			tempResultDiv.setAttribute('id', 'testGenDiv' + testArray[i]); //testGenDiv, testGenDiv2, and so on
 			
-			ndiv.appendChild(document.createElement('br'));
+			tempResultDiv.appendChild(document.createElement('br'));
+
+			//make the span that has the post info and view comments button
+			tempPostInfoSpan = document.createElement('span');
+			//add the post info text
+			tempPostInfoSpan.innerHTML = "<i>by u/exampleUser 00 points 00 hours ago </i>"; 
+			//make the button that will be added to the span - i'm testing out using button instead of input type=button
+			tempViewCommentsButton = document.createElement('button');
+			//set the text inside the button
+			tempViewCommentsButton.textContent = "View comments";
+			//example post id for testing if i can use a variable in set attribute. final version i'll need to set the id from the json's post id
+			examplePostIdVariable = "examplePostId" + testArray[i]; 
+			//set the post id as the button's name, so this.name can be used in onclick - although while i'm setting this programatically i could probs put the string of the post id in the setattribute onclick
+			tempViewCommentsButton.setAttribute('name', examplePostIdVariable);
+			//set onclick
+			tempViewCommentsButton.setAttribute('onclick', 'view_post_comments(this.name)');
+			//now add the button to the span
+			tempPostInfoSpan.appendChild(tempViewCommentsButton);
+
+			//add the span to the result div
+			tempResultDiv.appendChild(tempPostInfoSpan);	
+			
+			tempResultDiv.appendChild(document.createElement('br'));
+
+			//
 
 
 
-
-			document.getElementById("searchResultsDiv").appendChild(ndiv);
+			//add the div of this result to the div of all results
+			document.getElementById("searchResultsDiv").appendChild(tempResultDiv);
 		}
+		//fuckin hell this is so much more complicated to read over than looking at the html. maybe i can just set .innerHTML and just type out html and insert strings as needed?
+
 	}
 
 </script>
