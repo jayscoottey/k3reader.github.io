@@ -46,9 +46,6 @@
 		<span><b>Example Post Title</b></span>
 		<br>
 		<span id="examplePostIdPreview">If a post has a long body, show a preview w/ an option to expand it... <input type="button" name="examplePostId" onclick="expand_post_body(this.name)" value="Expand"> </span>
-		<span id="examplePostIdBody"></span>
-
-		<p>test paragraph, with button? <button></button></p>
 		
 
 	</div>
@@ -60,6 +57,7 @@
 		<br>
 		<span id="examplePost2TitleSpan"><b>Example Post2 Title</b></span>
 		<br>
+		<span id="examplePostIdPreview">If a post has a long body, show a preview w/ an option to expand it... <input type="button" name="examplePost2Id" onclick="expand_post_body(this.name)" value="Expand"> </span>
 
 
 	</div>
@@ -159,16 +157,33 @@
 
 		testArray = ["", "2"];
 		for (i in testArray) {
-			ndiv = document.createElement('div'); //make a new div for each search result, that will be appended to the div of all results
+			tempResultDiv = document.createElement('div'); //make a new div for each search result, that will be appended to the div of all results
 			//i'm just trying to recreate the original html, but with create element
-			ndiv.setAttribute('id', 'testGenDiv' + testArray[i]); //testGenDiv, testGenDiv2, and so on
+			tempResultDiv.setAttribute('id', 'testGenDiv' + testArray[i]); //testGenDiv, testGenDiv2, and so on
 			
-			ndiv.appendChild(document.createElement('br'));
+			tempResultDiv.appendChild(document.createElement('br'));
 
+			//add the span with post info
+			tempPostInfoSpan = document.createElement('span');
+			//for the next line: keep track of using ' and "
+			tempPostInfoSpan.innerHTML = '<i>by u/exampleUser' + testArray[i] + ' 00 points 00 hours ago</i> <input type="button" name="examplePost' + testArray[i] + 'Id" onclick="view_post_comments(this.name)" value="View comments">';
+			tempResultDiv.appendChild(tempPostInfoSpan);
 
+			tempResultDiv.appendChild(document.createElement('br'));
 
+			//add the span with the post title
+			tempPostTitleSpan = document.createElement('span');
+			tempPostTitleSpan.innerHTML = '<b>Example Post' + testArray[i] + ' Title</b>';
+			tempResultDiv.appendChild(tempPostTitleSpan);
 
-			document.getElementById("searchResultsDiv").appendChild(ndiv);
+			tempResultDiv.appendChild(document.createElement('br'));
+			
+			tempPostPreviewSpan = document.createElement('span');
+			tempPostPreviewSpan.setAttribute('id', 'examplePostId' + testArray[i] + 'Preview');
+			tempPostPreviewSpan.innerHTML = 'If a post has a long body, show a preview w/ an option to expand it... <input type="button" name="examplePost' + testArray[i] + 'Id" onclick="expand_post_body(this.name)" value="Expand">'
+			tempResultDiv.appendChild(tempPostPreviewSpan);
+
+			document.getElementById("searchResultsDiv").appendChild(tempResultDiv);
 		}
 	}
 
