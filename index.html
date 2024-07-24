@@ -36,25 +36,35 @@
 
 <div id="searchResultsDiv"> <!----------example layout: clear this with JS ---------->
 
-	<div>
+	<div id="examplePostId_div">
 		<br>
-		<span><i>by u/exampleUser 00 points 00 hours ago</i> <input type="button" name="examplePostId" onClick="view_post_comments(this.name)" value="View comments"> </span>
+		<span><i>by u/exampleUser 00 points 00 hours ago</i> <input type="button" onclick="view_post_comments('examplePostId')" value="View comments"> </span>
 		<br>
 		<span><b>Example Post Title</b></span>
 		<br>
-		<span id="examplePostIdPreview">If a post has a long body, show a preview w/ an option to expand it... <input type="button" name="examplePostId" onClick="expand_post_body(this.name)" value="Expand"> </span>
-		<span id="examplePostIdBody"></span>
+		<span id="examplePostId_bodyPreview">If a post is long, just show a preview w/ an option to expand it... <input type="button" onclick="expand_post_body('examplePostId')" value="Expand (the invisible span)"> </span>
+		<span id="examplePostId_bodyFull">
+			Full post....................................
+			<br>
+			.............................................
+			<br>
+			.............................................
+			<br>
+			<button onclick="collapse_post_body('examplePostId')">Collapse (setting span invisible)</button>
+		</span>
+		
 		
 
 	</div>
 
 
-	<div id="testDiv">
+	<div id="examplePost2Id_div">
 		<br>
-		<span id="examplePost2InfoSpan"><i>by u/exampleUser2 00 points 00 hours ago</i> <input type="button" name="examplePost2Id" onClick="view_post_comments(this.name)" value="View comments"> </span>
+		<span id="examplePost2InfoSpan"><i>by u/exampleUser2 00 points 00 hours ago</i> <input type="button" name="examplePost2Id" onclick="view_post_comments(this.name)" value="View comments"> </span>
 		<br>
 		<span id="examplePost2TitleSpan"><b>Example Post2 Title</b></span>
 		<br>
+		<span id="examplePost2Id_bodyPreview">If a post is long, just show a preview w/ an option to expand it... <input type="button" onclick="testing_generate_expanded_span('examplePost2Id')" value="Expand (created with JS)"> </span>
 
 
 	</div>
@@ -70,7 +80,7 @@
 	<br>
 
 	<br>
-	<span><input type="button" onClick="go_back_to_search()" value="<-"> <i>by u/exampleUser 00 points 00 hours ago</i> </span>
+	<span><input type="button" onclick="go_back_to_search()" value="<-"> <i>by u/exampleUser 00 points 00 hours ago</i> </span>
 	<br>
 	<span><b>Example Post Title</b></span>
 	<br>
@@ -119,6 +129,27 @@
 
 <script>
 
+	//i'm not sure if i want to load each post's full body into the page at first and just make them all 
+	//invisible, or wait to add the element containing the text until after the expand button is pressed.
+	//i need to set the first result's full body span invisible for testing:
+	document.getElementById("examplePostId_bodyFull").style.display='none';
+	//and here is the code to load it in for the 2nd example post:
+	function testing_generate_expanded_span(examplePostId) {
+		document.getElementById(examplePostId + "_bodyPreview").style.display = 'none';
+		tempGeneratedSpan = document.createElement('span');
+		tempGeneratedSpan.setAttribute('id', examplePostId + "_bodyFull");
+		tempGeneratedSpan.innerHTML = 'Full post..................................<br>............................<br>...........................<br><button onclick="testing_delete_expanded_span(' + "'" + examplePostId + "'" + ')">Collapse (by deleting span)</button>';
+		//okay this ^ is messy as fucking shit with all the needing to have different ' and "s inside of different " and 's to make it work. fucking hell. i'm gonna commit this just to keep a record of it because it's fucking funny. maybe making *some* elements with JS would be easier even if i don't like it
+		document.getElementById(examplePostId + "_div").appendChild(tempGeneratedSpan);
+	}
+	//and testing deleting that span to collapse it:	although it could just be set invisible and left in memory in case i want to go read it again,
+	//probably not tho and it's not that much work for the K3's browser to make a new span each time, right?
+	function testing_delete_expanded_span(examplePostId) {
+		document.getElementById(examplePostId + "_bodyFull").parentNode.removeChild(document.getElementById(examplePostId + "_bodyFull"));
+		document.getElementById(examplePostId + "_bodyPreview").style.display = '';
+	}
+	
+
 	function hide_element(passedElementId) {
 		document.getElementById(passedElementId).style.display='none';
 	}
@@ -128,16 +159,17 @@
 	}
 
 	function expand_post_body(passedElementId){
-		document.getElementById(passedElementId + "Preview").style.display='none';
-		testText = "Text post here ----------------------------------------------------------------";
-		document.getElementById(passedElementId + "Body").innerHTML += testText + " <br> <input type='button' name='" + passedElementId + "' onClick='collapse_post_body(this.name)' value='Collapse'>";
+		passedPostBodyPreview = document.getElementById(passedElementId + "_bodyPreview");
+		passedPostBodyPreview.style.display='none';
+		//document.getElementById(passedElementId + "_div").appendChild(document.createElement('span')).innerHTML = "test........................... <br> ..................................... <br> ...........................";
+		document.getElementById('examplePostId_bodyFull').style.display='block';
 	}
 
 	//not sure whether to populate each paragraph with the post body upon search, or do it like i am now. 
 
 	function collapse_post_body(passedElementId){
-		document.getElementById(passedElementId + "Body").innerHTML = "";
-		document.getElementById(passedElementId + "Preview").style.display='block';
+		document.getElementById(passedElementId + "_bodyFull").style.display = 'none';
+		document.getElementById(passedElementId + "_bodyPreview").style.display='block';
 	}
 
 </script>
